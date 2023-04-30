@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript">
+			function linkify(text, linkColor) {
+			var pattern = /([A-Z]{2})/g;
+			var linkifiedText = text.replace(pattern, "<a style='color:" + linkColor + "' href='https://www.google.com/search?q=$1'>$1</a>");
+			return linkifiedText;
+		}
+
+		function printLineByLine(text) {
+			let lines = text.split("\n");
+			let i = 0;
+			let interval = setInterval(() => {
+				if (i < lines.length) {
+					document.getElementById("output").innerHTML += lines[i] + "<br>";
+					i++;
+				} else {
+					clearInterval(interval);
+				}
+			}, 100);
+		}
+	</script>
+	<style>
+		body {
+			background-color: black;
+			color: green;
+			text-align: center;
+			font-size: 20px;
+		}
+		a.linkifiedText {
+			color: red;
+		}
+	</style>
+</head>
+<body onload="printLineByLine(linkify(asciiArt))">
+	<pre id="output"></pre>
+
+	<script>
+		let asciiArt = `
+	         ,__                                                  _,
+	      \\~\\|  ~~---___              ,                          | \\
+	       |      / |   ~~~~~~~|~~~~~| ~~---,                  _/,ME>
+	         /~-_--__| |          |     \\     / ~\\~~/          /~|NH|VT|,'
+	      |       /  \\         |------|   {    / /~)     __-  ',|MA\\,
+	     \\       |    |~~~~~~~~|      \\    \\   | | '~\\  |_____,|~,-'
+	     \\~~--__ |    |        |____  |~~~~~|--| |__ /_-'     {,~
+	     |   |  ~~~|~~|        |    ~~\\     /  \`-' |\`~ |~_____{/
+	      |   |     |  '---------,      \\----|   |  |  ,' ~/~\\,|\`
+	     ',  \\     |    |       |~~~~~~~|    \\  | ,'~~\\  /    |
+	      |   \\    |    |       |       |     \\_-~    /\`~___--\\
+	     ',   \\  ,-----|-------+-------'_____/__----~~/      /
+	       '_   '\\|       |      |~~~|     |    |      _/-,~~-,/
+	       \\     |      |      |   |_    |    /~~|~~\\    \\,/
+	          ~~~-'     |      |     \`~~~\\___|   |   |    /
+	              '-,_  | _____|          |  /   | ,-\'---~\\
+	                  \`~'~ \\             |  \`--,~~~~-~~,  \\
+	                         \\/~\\      /~~~\`---\`         |  \\
+	                             \\    /                   \\  |
+	                              \\  |                     '\\'
+	       \`~'
+        `;
+	</script>
+</body>
+</html>
